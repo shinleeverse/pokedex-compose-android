@@ -1,3 +1,5 @@
+import com.shinleeverse.pokedex.Configuration
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
@@ -6,19 +8,11 @@ plugins {
 
 android {
     namespace = "com.shinleeverse.pokedex"
-    compileSdk {
-        version = release(37) {
-            minorApiLevel = 1
-        }
-    }
 
     defaultConfig {
         applicationId = "com.shinleeverse.pokedex"
-        minSdk = 26
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
-
+        versionCode = Configuration.versionCode
+        versionName = Configuration.versionName
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
