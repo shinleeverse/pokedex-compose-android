@@ -1,32 +1,22 @@
 plugins {
-    alias(libs.plugins.android.library)
+    alias(libs.plugins.pokedex.android.library)
+    alias(libs.plugins.pokedex.android.library.compose)
+    alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.pokedex.android.hilt)
 }
 
 android {
     namespace = "com.shinleeverse.pokedex.core.navigation"
-    compileSdk {
-        version = release(37) {
-            minorApiLevel = 1
-        }
-    }
-
-    defaultConfig {
-        minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-
 }
 
 dependencies {
-    implementation(libs.androidx.appcompat)
+    implementation(projects.core.model)
+
     implementation(libs.androidx.core.ktx)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(libs.androidx.junit)
+    implementation(libs.kotlinx.coroutines.android)
+
+    api(libs.androidx.navigation3.runtime)
+    api(libs.androidx.navigation3.ui)
+
+    implementation(libs.kotlinx.serialization.json)
 }

@@ -1,9 +1,10 @@
 import com.shinleeverse.pokedex.Configuration
 
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.ksp)
+    alias(libs.plugins.pokedex.android.application)
+    alias(libs.plugins.pokedex.android.application.compose)
+    alias(libs.plugins.pokedex.android.hilt)
+    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
@@ -23,18 +24,11 @@ android {
             }
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    buildFeatures {
-        compose = true
-        buildConfig = true
-    }
 }
 
 dependencies {
     implementation(libs.timber)
+
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)

@@ -1,32 +1,34 @@
 plugins {
-    alias(libs.plugins.android.library)
+    alias(libs.plugins.pokedex.android.library)
+    alias(libs.plugins.pokedex.android.hilt)
+    alias(libs.plugins.ksp)
 }
 
 android {
     namespace = "com.shinleeverse.pokedex.core.database"
-    compileSdk {
-        version = release(37) {
-            minorApiLevel = 1
-        }
-    }
 
     defaultConfig {
-        minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        ksp {
+            arg("room.schemaLocation", "$projectDir/schema")
+        }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-
 }
 
 dependencies {
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.material)
+    implementation(projects.core.model)
+
+    //coroutines
+    implementation(libs.kotlinx.coroutines.android)
+    testImplementation(libs.kotlinx.coroutines.test)
+
+    // database
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
+
+    // json parsing
+    implementation(libs.kotlinx.serialization.json)
+
+    // unit test
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(libs.androidx.junit)
 }
