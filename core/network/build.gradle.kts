@@ -6,13 +6,16 @@ plugins {
 
 android {
     namespace = "com.shinleeverse.pokedex.core.network"
+
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 dependencies {
     implementation(projects.core.model)
 
     // Coroutines
-    implementation(libs.kotlinx.coroutines.android)
     testImplementation(libs.kotlinx.coroutines.test)
 
     // Network
