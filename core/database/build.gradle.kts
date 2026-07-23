@@ -12,6 +12,12 @@ android {
             arg("room.schemaLocation", "$projectDir/schema")
         }
     }
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -31,4 +37,6 @@ dependencies {
 
     // unit test
     testImplementation(libs.junit)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.androidx.test.core)
 }

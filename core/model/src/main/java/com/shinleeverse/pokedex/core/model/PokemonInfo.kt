@@ -10,9 +10,10 @@ data class PokemonInfo(
     @SerialName(value = "name") val name: String,
     @SerialName(value = "height") val height: Int,
     @SerialName(value = "weight") val weight: Int,
-    @SerialName(value = "types") val types: List<TypeResponse>,
-    @SerialName(value = "stats") val stats: List<StatResponse>,
-    @SerialName(value = "base_experience") val exp: Int = Random.nextInt(MAX_EXP)
+    @SerialName(value = "base_experience") val experience: Int,
+    @SerialName(value = "types") val types: List<TypeMetaData>,
+    @SerialName(value = "stats") val stats: List<StatMetaData>,
+    val exp : Int = Random.nextInt(MAX_EXP)
 ) {
     val hp: Int by lazy {
         stats.firstOrNull { it.stat.name == "hp" }?.baseStat ?: Random.nextInt(MAX_HP)
@@ -37,7 +38,7 @@ data class PokemonInfo(
     fun getExpString() : String = " $exp/$MAX_EXP"
 
     @Serializable
-    data class TypeResponse(
+    data class TypeMetaData(
         @SerialName(value = "slot") val slot: Int,
         @SerialName(value = "type") val type: Type
     )
@@ -48,7 +49,7 @@ data class PokemonInfo(
     )
 
     @Serializable
-    data class StatResponse(
+    data class StatMetaData(
         @SerialName(value = "base_stat") val baseStat: Int,
         @SerialName(value = "effort") val effort: Int,
         @SerialName(value = "stat") val stat: Stat
