@@ -24,7 +24,7 @@ dependencyResolutionManagement {
 }
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
-gradle.startParameter.excludedTaskNames.addAll(listOf(":build-logic:convention:testClasses"))
+//gradle.startParameter.excludedTaskNames.addAll(listOf(":build-logic:convention:testClasses"))
 
 rootProject.name = "Pokedex"
 include(":app")
@@ -36,3 +36,4 @@ include(":core:datastore")
 include(":feature:list")
 include(":feature:details")
 include(":core:model")
+include(":core:common")

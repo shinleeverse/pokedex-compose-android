@@ -20,7 +20,7 @@ internal object DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideAppDatabase(
+    fun providesAppDatabase(
         application: Application,
         typeMetaDataConverter: TypeMetaDataConverter,
         statMetaDataConverter: StatMetaDataConverter
@@ -37,19 +37,19 @@ internal object DatabaseModule {
 
     @Provides
     @Singleton
-    fun providePokemonDao(appDatabase : PokedexDatabase) : PokemonDao {
+    fun providesPokemonDao(appDatabase : PokedexDatabase) : PokemonDao {
         return appDatabase.pokemonDao()
     }
 
     @Provides
     @Singleton
-    fun providePokemonInfoDao(appDatabase : PokedexDatabase) : PokemonInfoDao {
+    fun providesPokemonInfoDao(appDatabase : PokedexDatabase) : PokemonInfoDao {
         return appDatabase.pokemonInfoDao()
     }
 
     @Provides
     @Singleton
-    fun provideTypeMetaDataConverter(json : Json) : TypeMetaDataConverter {
+    fun providesTypeMetaDataConverter(json : Json) : TypeMetaDataConverter {
         return TypeMetaDataConverter(json)
     }
 }

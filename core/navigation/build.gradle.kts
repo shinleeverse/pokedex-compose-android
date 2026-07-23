@@ -19,4 +19,10 @@ dependencies {
     api(libs.androidx.navigation3.ui)
 
     implementation(libs.kotlinx.serialization.json)
+
+    testImplementation(libs.junit)
+    testImplementation(libs.androidx.test.core)
+
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option java_package = "com.shinleeverse.pokedex.core.datastore";
+option java_multiple_files = true;
+
+enum UiThemeConfig {
+    UI_THEME_CONFIG_UNSPECIFIED = 0;
+    UI_THEME_CONFIG_SYSTEM_DEFAULT = 1;
+    UI_THEME_CONFIG_LIGHT = 2;
+    UI_THEME_CONFIG_DARK = 3;
+}

@@ -22,13 +22,13 @@ internal object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideJson(): Json = Json {
+    fun providesJson(): Json = Json {
         ignoreUnknownKeys = true
     }
 
     @Singleton
     @Provides
-    fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder().apply {
+    fun providesOkHttpClient(): OkHttpClient = OkHttpClient.Builder().apply {
         if (BuildConfig.DEBUG) {
             this.addNetworkInterceptor(
                 HttpLoggingInterceptor().apply {
@@ -40,7 +40,7 @@ internal object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit(json: Json, okHttpClient: OkHttpClient): Retrofit =
+    fun providesRetrofit(json: Json, okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl("https://pokeapi.co/api/v2")
@@ -50,11 +50,11 @@ internal object NetworkModule {
 
     @Singleton
     @Provides
-    fun providePokedexService(retrofit: Retrofit): PokedexService =
+    fun providesPokedexService(retrofit: Retrofit): PokedexService =
         retrofit.create(PokedexService::class.java)
 
     @Singleton
     @Provides
-    fun providePokedexClient(pokedexService: PokedexService): PokedexClient =
+    fun providesPokedexClient(pokedexService: PokedexService): PokedexClient =
         PokedexClient(pokedexService)
 }
