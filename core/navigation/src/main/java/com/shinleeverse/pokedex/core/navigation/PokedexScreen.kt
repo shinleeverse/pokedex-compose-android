@@ -1,9 +1,10 @@
 package com.shinleeverse.pokedex.core.navigation
 
+import androidx.navigation3.runtime.NavKey
 import com.shinleeverse.pokedex.core.model.Pokemon
 import kotlinx.serialization.Serializable
 
-sealed interface PokedexScreen {
+sealed interface PokedexScreen : NavKey {
 
     @Serializable
     data object List: PokedexScreen
