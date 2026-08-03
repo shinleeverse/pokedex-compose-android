@@ -1,14 +1,14 @@
-package com.shinleeverse.pokedex.core.database
+package com.shinleeverse.pokedex.core.test
 
 import com.shinleeverse.pokedex.core.model.Pokemon
 import com.shinleeverse.pokedex.core.model.PokemonInfo
 
-object MockUtil {
+object MockUtils {
 
     fun mockPokemon() = Pokemon(
         page = 0,
         nameField = "bulbasaur",
-        url = "https://pokeapi.co/api/v2/pokemon/1/"
+        url = "https://pokeapi.co/api/v2/pokemon/1/",
     )
 
     fun mockPokemonList() = listOf(mockPokemon())

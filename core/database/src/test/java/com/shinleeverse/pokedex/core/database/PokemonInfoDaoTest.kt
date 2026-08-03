@@ -1,6 +1,7 @@
 package com.shinleeverse.pokedex.core.database
 
 import com.shinleeverse.pokedex.core.database.entity.mapper.toEntity
+import com.shinleeverse.pokedex.core.test.MockUtils
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
@@ -23,7 +24,7 @@ class PokemonInfoDaoTest : LocalDatabase() {
 
     @Test
     fun insertAndLoadPokemonInfoTest() = runBlocking{
-        val mockPokemonInfo = MockUtil.mockPokemonInfo()
+        val mockPokemonInfo = MockUtils.mockPokemonInfo()
         pokemonInfoDao.insertPokemonInfo(mockPokemonInfo.toEntity())
 
         val loadFromDbById = pokemonInfoDao.getPokemonInfoById(mockPokemonInfo.id)

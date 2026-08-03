@@ -22,6 +22,7 @@ android {
 
 dependencies {
     implementation(projects.core.model)
+    implementation(projects.core.test)
 
     //coroutines
     implementation(libs.kotlinx.coroutines.android)

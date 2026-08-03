@@ -1,6 +1,7 @@
 package com.shinleeverse.pokedex.core.database
 
 import com.shinleeverse.pokedex.core.database.entity.mapper.toEntity
+import com.shinleeverse.pokedex.core.test.MockUtils
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
@@ -22,13 +23,13 @@ class PokemonDaoTest : LocalDatabase() {
 
     @Test
     fun insertAndLoadPokemonListTest() = runBlocking {
-        val mockDataList = MockUtil.mockPokemonList().toEntity()
+        val mockDataList = MockUtils.mockPokemonList().toEntity()
         pokemonDao.insertPokemonList(mockDataList)
 
         val loadFromDB = pokemonDao.getPokemonList(page_ = 0)
         assertThat(loadFromDB.toString(), `is`(mockDataList.toString()))
 
-        val mockData = listOf(MockUtil.mockPokemon()).toEntity()[0]
+        val mockData = listOf(MockUtils.mockPokemon()).toEntity()[0]
         assertThat(loadFromDB[0].toString(), `is`(mockData.toString()))
     }
 }
